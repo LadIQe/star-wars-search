@@ -17,13 +17,19 @@
       >
     </div>
 
-    <div
-      v-for="(hero, i) in heros"
-      :key="i"
-      class="hero"
+    <transition-group
+      appear
+      enter-active-class="animated fadeIn"
+      leave-active-class="animated fadeOut"
     >
-      <span v-html="hero" />
-    </div>
+      <div
+        v-for="(hero, i) in heros"
+        :key="i"
+        class="hero"
+      >
+        <span v-html="hero" />
+      </div>
+    </transition-group>
   </div>
 </template>
 
