@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>{{ $t('title') }}</h1>
+    <h1>{{ t('title') }}</h1>
 
     <div>
       <q-input
@@ -29,11 +29,13 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 import HeroList from 'src/components/HeroList.vue'
+import { useI18n } from 'vue-i18n'
 
 export default defineComponent({
   components: { HeroList },
 
   setup () {
+    const { t } = useI18n()
     const name = ref('')
     const isSearching = ref(false)
 
@@ -42,6 +44,7 @@ export default defineComponent({
     }
 
     return {
+      t,
       name,
       isSearching,
       setSearching

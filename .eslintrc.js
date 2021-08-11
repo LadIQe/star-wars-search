@@ -16,7 +16,7 @@ module.exports = {
     parser: "@typescript-eslint/parser",
     project: resolve(__dirname, "./tsconfig.json"),
     tsconfigRootDir: __dirname,
-    ecmaVersion: 2018, // Allows for the parsing of modern ECMAScript features
+    ecmaVersion: 2021, // Allows for the parsing of modern ECMAScript features
     sourceType: "module", // Allows for the use of imports
   },
 
@@ -129,6 +129,7 @@ module.exports = {
     "@typescript-eslint/no-unsafe-return": "off",
     "@typescript-eslint/no-unsafe-call": "off",
     "@typescript-eslint/ban-ts-comment": "off",
-    "import/named": "off"
+    "import/named": "off",
+    "@typescript-eslint/unbound-method": "off"
   },
 };

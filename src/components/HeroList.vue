@@ -8,7 +8,7 @@
         v-show="!name"
         class="text-subtitle1"
       >
-        {{ $t('emptyName') }}
+        {{ t('emptyName') }}
       </span>
 
       <img
@@ -32,6 +32,7 @@ import { fetchHeroes } from 'src/store/services'
 import { defineComponent, toRef, ref, watch } from 'vue'
 import { Notify } from 'quasar'
 import { capitalize } from 'src/utils/StringUtils'
+import { useI18n } from 'vue-i18n'
 
 export default defineComponent({
   props: {
@@ -44,6 +45,7 @@ export default defineComponent({
   emits: ['searching'],
 
   setup (props, { emit }) {
+    const { t } = useI18n()
     const name = toRef(props, 'name')
     const isSearching = ref(false)
     const heros = ref<string[]>([])
@@ -66,13 +68,13 @@ export default defineComponent({
           if (index === 0) {
             const capitalizedName = capitalize(name)
 
-            return item.name.replace(capitalizedName, `<b>${capitalizedName}</b>`)
+            return item.name.replaceAll(capitalizedName, `<b>${capitalizedName}</b>`)
           }
 
-          return item.name.replace(name, `<b>${name}</b>`)
+          return item.name.replaceAll(name, `<b>${name}</b>`)
         })
       } catch {
-        Notify.create({ message: 'Something went wrong', type: 'negative' })
+        Notify.create({ message: t('somethingWrong'), type: 'negative' })
       }
 
       setSearching(false)
@@ -87,6 +89,7 @@ export default defineComponent({
     })
 
     return {
+      t,
       heros,
       isSearching
     }

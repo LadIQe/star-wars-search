@@ -4,5 +4,5 @@
 export default {
   title: 'StarWars search',
   emptyName: 'Enter search phrase',
-  nothingFound: 'Nothing found!'
+  somethingWrong: 'Something went wrong'
 }
